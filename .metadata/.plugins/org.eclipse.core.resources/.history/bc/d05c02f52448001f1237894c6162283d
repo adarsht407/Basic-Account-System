@@ -1,0 +1,111 @@
+package com.test.account;
+
+
+import java.util.Scanner;
+import static java.lang.Class.forName;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+public class Main_Menu {
+	
+	private static final String url = "jdbc:mysql://localhost:3306/assignment";
+    private static final String username = "root";
+    private static final String password = "9674040677";
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		Connection connection = null;
+		try {
+			 connection = DriverManager.getConnection(url, username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       System.out.println("okay");
+		// TODO Auto-generated method stub
+		try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+        }catch (ClassNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+		 try(Scanner scanner = new Scanner(System.in)){
+	        while (true) {
+	            System.out.println("1. Add New Customer Account");
+	            System.out.println("2. View Account Details");
+	            System.out.println("3. Update Account Information");
+	            System.out.println("4. Close Account");
+	            System.out.println("5. Deposit Funds");
+	            System.out.println("6. Withdraw Funds");
+	            System.out.println("7. Transfer Funds");
+	            System.out.println("8. View Transaction History");
+	            System.out.println("9. Exit");
+	            System.out.print("Choose an option: ");
+	            int choice = scanner.nextInt();
+	            switch (choice) {
+	                case 1:
+	   
+	                            String open_account_query = "INSERT INTO Account(account_id, customer_id, account_type, balance) VALUES(?, ?, ?, ?)";
+	                            scanner.nextLine();
+	                            int c_id = 1;
+	                            System.out.print("Enter Account Id: ");
+	                            int acc_id = scanner.nextInt();
+	                            System.out.print("Enter Initial Amount: ");
+	                            double balance = scanner.nextDouble();
+	                            scanner.nextLine();
+	                            System.out.print("Enter Account Type ");
+	                            String account_type = scanner.nextLine();
+	                            try {
+	                            	
+	                                PreparedStatement preparedStatement = connection.prepareStatement(open_account_query);
+	                                long account_number=acc_id;
+									preparedStatement.setLong(1, account_number);
+	                                preparedStatement.setInt(2, c_id);
+	                                
+									preparedStatement.setString(3, account_type);
+	                                preparedStatement.setDouble(4, balance);
+	                               
+	                                int rowsAffected = preparedStatement.executeUpdate();
+	                                if (rowsAffected > 0) {
+	                                    System.out.println("Account Added Successfully");
+	                                } else {
+	                                    throw new RuntimeException("Account Creation failed!!");
+	                                }
+	                            } catch (SQLException e) {
+	                                e.printStackTrace();
+	                            }
+	                    break;
+	                case 2:
+	                    // View account details
+	                    break;
+	                case 3:
+	                    // Update account information
+	                    break;
+	                case 4:
+	                    // Close account
+	                    break;
+	                case 5:
+	                    // Deposit funds
+	                    break;
+	                case 6:
+	                    // Withdraw funds
+	                    break;
+	                case 7:
+	                    // Transfer funds
+	                    break;
+	                case 8:
+	                    // View transaction history
+	                    break;
+	                case 9:
+	                    System.exit(0);
+	                    break;
+	                default:
+	                    System.out.println("Invalid option. Please try again.");
+	            }
+	        }
+		 }
+
+	}
+
+}

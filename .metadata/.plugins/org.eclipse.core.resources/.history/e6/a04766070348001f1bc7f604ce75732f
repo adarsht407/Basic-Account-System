@@ -1,0 +1,64 @@
+package com.test.account;
+
+import java.util.Scanner;
+
+public class Main_Menu {
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		// TODO Auto-generated method stub
+		try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("okay");
+        }catch (ClassNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+//		 try(Scanner scanner = new Scanner(System.in)){
+//	        while (true) {
+//	            System.out.println("1. Add New Customer Account");
+//	            System.out.println("2. View Account Details");
+//	            System.out.println("3. Update Account Information");
+//	            System.out.println("4. Close Account");
+//	            System.out.println("5. Deposit Funds");
+//	            System.out.println("6. Withdraw Funds");
+//	            System.out.println("7. Transfer Funds");
+//	            System.out.println("8. View Transaction History");
+//	            System.out.println("9. Exit");
+//	            System.out.print("Choose an option: ");
+//	            int choice = scanner.nextInt();
+//	            switch (choice) {
+//	                case 1:
+//	                    // Add new customer account
+//	                    break;
+//	                case 2:
+//	                    // View account details
+//	                    break;
+//	                case 3:
+//	                    // Update account information
+//	                    break;
+//	                case 4:
+//	                    // Close account
+//	                    break;
+//	                case 5:
+//	                    // Deposit funds
+//	                    break;
+//	                case 6:
+//	                    // Withdraw funds
+//	                    break;
+//	                case 7:
+//	                    // Transfer funds
+//	                    break;
+//	                case 8:
+//	                    // View transaction history
+//	                    break;
+//	                case 9:
+//	                    System.exit(0);
+//	                    break;
+//	                default:
+//	                    System.out.println("Invalid option. Please try again.");
+//	            }
+//	        }
+//		 }
+
+	}
+
+}
